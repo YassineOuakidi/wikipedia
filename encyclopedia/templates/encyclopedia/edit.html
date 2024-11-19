@@ -1,0 +1,16 @@
+{% extends 'encyclopedia/layout.html' %}
+
+
+{% block title %}
+    {{entry_name}}
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid" style="margin-top:50px ;"></div>
+    <form method="POST">
+        {% csrf_token %}
+        {{form}}
+        <button type="submit" style="background-color: rgb(61, 61, 217);">Save</button>
+
+    </form>
+{% endblock %}
