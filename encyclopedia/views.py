@@ -97,7 +97,7 @@ def edit_content(request , entry):
         
     return render(request , 'encyclopedia/edit.html' , {
         'form' : MyForm,
-        'entry' : entry
+        'entry' : entry,
     })
 
 def delete_content(request , entry):
