@@ -18,6 +18,9 @@ class AddNewEntryForm(forms.ModelForm):
             'description': forms.Textarea(attrs={
                 'placeholder': 'Enter a detailed description...',
             }),
+            'title' : forms.TextInput(attrs={
+                'style' : 'line-height: 30px;'
+            })
         }
 
 
@@ -96,3 +99,7 @@ def edit_content(request , entry):
         'form' : MyForm,
         'entry' : entry
     })
+
+def delete_content(request , entry):
+    os.remove(f'entries/{entry}.md')
+    return redirect("index")

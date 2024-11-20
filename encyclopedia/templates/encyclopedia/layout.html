@@ -16,19 +16,19 @@
                     <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
                     
                 </form>
-                <div>
+                <div class="d-flex  justify-content-center">
                     <a href="{% url 'index' %}">Home</a>
                 </div>
-                <div>
+                <div class="d-flex  justify-content-center">
                     <a href="{% url 'create_new' %}">Create New Page</a>
                 </div>
-                <div>
+                <div class="d-flex justify-content-center">
                     <a href="{% url 'random_title' %}">Random Page</a>
                 </div>
                 {% block nav %}
                 {% endblock %}
             </div>
-            <div class="main col-lg-10 col-md-9">
+            <div class="main col-lg-10 col-md-9 " style="padding-left: 40px;">
                 {% block body %}
                 {% endblock %}
             </div>

@@ -9,8 +9,11 @@
     <div class="container-fluid" style="margin-top:50px ;"></div>
     <form method="POST">
         {% csrf_token %}
-        {{form}}
-        <button type="submit" style="background-color: rgb(61, 61, 217);">Save</button>
+        <label for="'title" style="display: block; margin-top:20px;"><h3>Title</h3></label>
+        {{form.title}}
+        <label for="description" style="display: block; margin-top:20px;"><h3>Description</h3></label>
+        {{form.description}}
+        <button type="submit"  style="border-radius: .5em ; width: 110px; height: 40px; border: 0px ; margin-left: 45% ; background-color: rgb(132, 132, 248);">Save</button>
 
     </form>
 {% endblock %}
