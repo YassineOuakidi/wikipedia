@@ -1,24 +1,24 @@
-# Use the official Python image as the base image
-FROM python:3.10-slim
+# Use an official Python runtime as the base image
+FROM python:3.9-slim
+
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy the requirements.txt to the container
-COPY requirements.txt .
+# Copy project files to the container
+COPY . /app/
 
-# Install Python dependencies
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the entire project to the container
-COPY . .
+# Run collectstatic command
+RUN python manage.py collectstatic --noinput
 
-# Expose the port that the app runs on
+# Expose the application port
 EXPOSE 8000
 
-# Run Django migrations and collect static files
-RUN python manage.py collectstatic --noinput
-RUN python manage.py migrate
-
-# Command to run the application
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "wiki.wsgi:application"]
+# Run the application
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "wikipedia.wsgi:application"]
